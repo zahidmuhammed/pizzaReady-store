@@ -36,6 +36,21 @@ export const cartSlice = createSlice({
     clearCart: (state, action) => {
       state.cartItems = [];
     },
+    changeQty: (state, action) => {
+      state.cartItems.filter((obj) => {
+        if (obj.pid === action.payload.pid) {
+          if (action.payload.type === "plus") {
+            obj.pquantity += 1;
+          }
+          if (action.payload.type === "minus") {
+            if (obj.pquantity !== 1) {
+              obj.pquantity -= 1;
+            }
+          }
+        }
+        return obj;
+      });
+    },
   },
 });
 
@@ -44,6 +59,7 @@ export const {
   addToCart,
   setSingleItem,
   setToppings,
+  changeQty,
   removeFromCart,
   clearCart,
 } = cartSlice.actions;

@@ -1,11 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/cart";
+import { removeFromCart, changeQty } from "../redux/cart";
 
 import { FaTrash } from "react-icons/fa";
 
 const CartCard = ({ item }) => {
   const dispatch = useDispatch();
+
+  const plusCount = {
+    pid: item.pid,
+    type: "plus",
+  };
+
+  const minusCount = {
+    pid: item.pid,
+    type: "minus",
+  };
 
   return (
     <div
@@ -27,6 +37,9 @@ const CartCard = ({ item }) => {
       >
         {item.pname}
       </div>
+      <div style={{ fontSize: "15px", color: "#393939" }}>
+        Toppings:{item.ptoppings === "" ? " Nothing" : ` ${item.ptoppings}`}
+      </div>
       <div style={{ fontSize: "12px" }}>
         <span
           style={{
@@ -37,9 +50,6 @@ const CartCard = ({ item }) => {
         >
           {item.psize}
         </span>
-      </div>
-      <div style={{ fontSize: "15px", color: "#393939" }}>
-        Toppings:{item.ptoppings === "" ? " Nothing" : ` ${item.ptoppings}`}
       </div>
       <div
         style={{
@@ -68,6 +78,7 @@ const CartCard = ({ item }) => {
               alignItems: "center",
               margin: "0 10px",
             }}
+            onClick={() => dispatch(changeQty(minusCount))}
           >
             -
           </button>
@@ -83,6 +94,7 @@ const CartCard = ({ item }) => {
               alignItems: "center",
               margin: "0 10px",
             }}
+            onClick={() => dispatch(changeQty(plusCount))}
           >
             +
           </button>

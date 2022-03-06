@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { v4 } from "uuid";
 import "../styles/Popup.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSingleItem, setToppings } from "../redux/cart";
-// import RadioTopping from "./RadioTopping";
+import { RadioTopping } from "./RadioTopping";
 
 const ToppingsRadio = () => {
-  const toppings = useSelector((state) => state.products.toppings);
-  const [topping, setTopping] = useState("");
+  // const toppings = useSelector((state) => state.products.toppings);
+  const [topping, setTopping] = useState({
+    // red_pepper: false,
+    // onion: false,
+    // grilled_mushroom: false,
+    // extra_cheese: false,
+    // black_olive: false,
+  });
 
+  const handleChange = (e) => {
+    const { id, checked } = e.target;
+    setTopping({ [id]: checked });
+  };
+
+  // console.log(topping);
   const dispatch = useDispatch();
   dispatch(setToppings(topping));
 
@@ -17,104 +29,46 @@ const ToppingsRadio = () => {
       <input
         type="radio"
         name="toppings"
-        id={toppings[0]}
-        value={toppings[0]}
-        onChange={(e) => setTopping(e.target.value)}
+        id="red_pepper"
+        // value="red_pepper"
+        onChange={(e) => handleChange(e)}
       ></input>
-      <label htmlFor={toppings[0]}>{toppings[0]}</label>
+      <label htmlFor="red_pepper">Red Pepper</label>
       <input
         type="radio"
         name="toppings"
-        id={toppings[1]}
-        value={toppings[1]}
-        onChange={(e) => setTopping(e.target.value)}
+        id="onion"
+        // value="onion"
+        onChange={(e) => handleChange(e)}
       ></input>
-      <label htmlFor={toppings[1]}>{toppings[1]}</label>
+      <label htmlFor="onion">Onion</label>
       <input
         type="radio"
         name="toppings"
-        id={toppings[2]}
-        value={toppings[2]}
-        onChange={(e) => setTopping(e.target.value)}
+        id="grilled_mushroom"
+        // value="grilled_mushroom"
+        onChange={(e) => handleChange(e)}
       ></input>
-      <label htmlFor={toppings[2]}>{toppings[2]}</label>
+      <label htmlFor="grilled_mushroom">Grilled Mushroom</label>
       <input
         type="radio"
         name="toppings"
-        id={toppings[3]}
-        value={toppings[3]}
-        onChange={(e) => setTopping(e.target.value)}
+        id="extra_cheese"
+        // value="extra_cheese"
+        onChange={(e) => handleChange(e)}
       ></input>
-      <label htmlFor={toppings[3]}>{toppings[3]}</label>
+      <label htmlFor="extra_cheese">Extra Cheese</label>
       <input
         type="radio"
         name="toppings"
-        id={toppings[4]}
-        value={toppings[4]}
-        onChange={(e) => setTopping(e.target.value)}
+        id="black_olive"
+        // value="black_olive"
+        onChange={(e) => handleChange(e)}
       ></input>
-      <label htmlFor={toppings[4]}>{toppings[4]}</label>
+      <label htmlFor="black_olive">Black Olive</label>
     </div>
   );
 };
-
-// const ToppingsCheck = () => {
-//   const toppings = useSelector((state) => state.products.toppings);
-//   const [selectedToppings, setSelectedToppings] = useState({
-// toppings: {
-//   red_pepper: false,
-//   onion: false,
-//   grilled_mushroom: false,
-//   extra_cheese: false,
-//   black_olive: false,
-// },
-//   });
-//   console.log(selectedToppings);
-//   const handleChange = (e) => {
-//     const { name, checked } = e.target;
-//     setSelectedToppings({ [name]: checked });
-//   };
-
-//   return (
-//     <div>
-//       <input
-//         type="checkbox"
-//         id="red_pepper"
-//         name="red_pepper"
-//         onChange={(e) => handleChange(e)}
-//       ></input>
-//       <label htmlFor="red_pepper">{toppings[0]}</label>
-//       <input
-//         type="checkbox"
-//         id="onion"
-//         name="onion"
-//         onChange={(e) => handleChange(e)}
-//       ></input>
-//       <label htmlFor="onion">{toppings[1]}</label>
-//       <input
-//         type="checkbox"
-//         id="grilled_mushroom"
-//         name="grilled_mushroom"
-//         onChange={(e) => handleChange(e)}
-//       ></input>
-//       <label htmlFor="grilled_mushroom">{toppings[2]}</label>
-//       <input
-//         type="checkbox"
-//         id="extra_cheese"
-//         name="extra_cheese"
-//         onChange={(e) => handleChange(e)}
-//       ></input>
-//       <label htmlFor="extra_cheese">{toppings[3]}</label>
-//       <input
-//         type="checkbox"
-//         id="black_oliv"
-//         name="black_oliv"
-//         onChange={(e) => handleChange(e)}
-//       ></input>
-//       <label htmlFor="black_oliv">{toppings[4]}</label>
-//     </div>
-//   );
-// };
 
 const Popup = ({ product, isRadio }) => {
   const dispatch = useDispatch();
@@ -162,8 +116,7 @@ const Popup = ({ product, isRadio }) => {
         <label htmlFor="large">Large</label>
       </div>
       👇 Choose Toppings 👇
-      {/* {isRadio ? <ToppingsRadio /> : <ToppingsCheck />} */}
-      <ToppingsRadio />
+      {isRadio ? <ToppingsRadio /> : <RadioTopping />}
       <div style={{ margin: "10px" }}>
         Quantity
         <div>
@@ -179,7 +132,6 @@ const Popup = ({ product, isRadio }) => {
           </button>
         </div>
       </div>
-      {/* <RadioTopping /> */}
     </div>
   );
 };

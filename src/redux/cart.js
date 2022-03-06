@@ -7,7 +7,7 @@ const initialState = {
     pname: "",
     psize: "",
     pprice: 0,
-    ptoppings: "",
+    ptoppings: [],
     pquantity: 0,
   },
 };

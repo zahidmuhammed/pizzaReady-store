@@ -18,11 +18,17 @@ const CartCard = ({ item }) => {
     type: "minus",
   };
 
+  //Converts Object to  key/value array then filter toppings having value true
+  const ToppingsArray = Object.entries(item.ptoppings).filter(
+    ([key, value]) => value
+  );
+
   return (
     <div className="cartcard-wrapper">
       <div className="card-heading">{item.pname}</div>
       <div className="toppings-info">
-        Toppings:{item.ptoppings === "" ? " Nothing" : ` ${item.ptoppings}`}
+        Toppings:
+        {ToppingsArray.map(([key]) => key)}
       </div>
 
       <div className="qty-wrapper">

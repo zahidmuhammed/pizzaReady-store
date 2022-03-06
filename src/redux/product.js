@@ -3,14 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   datas: [],
   filteredProducts: [],
-  sizes: ["Regular", "Medium", "Large"],
-  toppings: [
-    "Red Pepper",
-    "Onion",
-    "Grilled Mushroom",
-    "Extra Cheese",
-    "Black Olive",
-  ],
+  // toppings: [
+  //   "Red Pepper",
+  //   "Onion",
+  //   "Grilled Mushroom",
+  //   "Extra Cheese",
+  //   "Black Olive",
+  // ],
 };
 
 export const productSlice = createSlice({

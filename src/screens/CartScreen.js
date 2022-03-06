@@ -7,7 +7,7 @@ import CartCard from "../components/CartCard";
 const CartScreen = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  // console.log(cartItems);
   return (
     <div className="cart-conatiner">
       <div className="cart-heading">Cart Items</div>

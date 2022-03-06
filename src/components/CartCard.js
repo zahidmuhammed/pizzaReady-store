@@ -40,17 +40,7 @@ const CartCard = ({ item }) => {
       <div style={{ fontSize: "15px", color: "#393939" }}>
         Toppings:{item.ptoppings === "" ? " Nothing" : ` ${item.ptoppings}`}
       </div>
-      <div style={{ fontSize: "12px" }}>
-        <span
-          style={{
-            backgroundColor: "#C4C4C4",
-            padding: "2px",
-            borderRadius: "3px",
-          }}
-        >
-          {item.psize}
-        </span>
-      </div>
+
       <div
         style={{
           display: "flex",
@@ -59,7 +49,7 @@ const CartCard = ({ item }) => {
           justifyContent: "space-between",
         }}
       >
-        <span>Quantity :</span>
+        <div>Quantity :</div>
         <div
           style={{
             display: "flex",
@@ -99,12 +89,23 @@ const CartCard = ({ item }) => {
             +
           </button>
         </div>
-        <FaTrash
-          color="red"
-          onClick={() => dispatch(removeFromCart(item.pid))}
-          style={{ cursor: "pointer" }}
-        ></FaTrash>
+        <div style={{ fontSize: "12px" }}>
+          <span
+            style={{
+              backgroundColor: "#C4C4C4",
+              padding: "2px",
+              borderRadius: "3px",
+            }}
+          >
+            {item.psize}
+          </span>
+        </div>
       </div>
+      <FaTrash
+        color="red"
+        onClick={() => dispatch(removeFromCart(item.pid))}
+        style={{ cursor: "pointer" }}
+      ></FaTrash>
     </div>
   );
 };

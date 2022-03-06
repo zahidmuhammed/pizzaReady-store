@@ -3,6 +3,7 @@ import { v4 } from "uuid";
 import "../styles/Popup.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setSingleItem, setToppings } from "../redux/cart";
+// import RadioTopping from "./RadioTopping";
 
 const ToppingsRadio = () => {
   const toppings = useSelector((state) => state.products.toppings);
@@ -60,13 +61,13 @@ const ToppingsRadio = () => {
 // const ToppingsCheck = () => {
 //   const toppings = useSelector((state) => state.products.toppings);
 //   const [selectedToppings, setSelectedToppings] = useState({
-//     toppings: {
-//       red_pepper: false,
-//       onion: false,
-//       grilled_mushroom: false,
-//       extra_cheese: false,
-//       black_olive: false,
-//     },
+// toppings: {
+//   red_pepper: false,
+//   onion: false,
+//   grilled_mushroom: false,
+//   extra_cheese: false,
+//   black_olive: false,
+// },
 //   });
 //   console.log(selectedToppings);
 //   const handleChange = (e) => {
@@ -116,39 +117,23 @@ const ToppingsRadio = () => {
 // };
 
 const Popup = ({ product, isRadio }) => {
-  const [size, setSize] = useState("Regular");
-  const [count, setCount] = useState(1);
-
   const dispatch = useDispatch();
+  const [count, setCount] = useState(1);
+  const [size, setSize] = useState("Regular");
+
   const selectedProduct = {
     pid: v4(),
-    pname: product.name,
     psize: size,
     pquantity: count,
+    pname: product.name,
+    pprice: product.price,
   };
 
   dispatch(setSingleItem(selectedProduct));
 
   return (
-    <div
-      className="popup-wrapper"
-      style={{
-        display: "flex ",
-        flexDirection: "column",
-        textAlign: "center",
-        fontWeight: "bold",
-      }}
-    >
-      <div
-        style={{
-          color: "#0e153a",
-          fontSize: "30px",
-          marginBottom: "10px",
-          fontWeight: "bold",
-        }}
-      >
-        {product.name}
-      </div>
+    <div className="popup-wrapper">
+      <div className="popup-heading">{product.name}</div>
       <span>👇 Choose Size 👇</span>
       <div className="pizza-size-wrapper">
         <input
@@ -183,32 +168,18 @@ const Popup = ({ product, isRadio }) => {
         Quantity
         <div>
           <button
+            className="qty-btn"
             onClick={() => setCount(count !== 1 ? count - 1 : count)}
-            style={{
-              border: "none",
-              height: "40px",
-              width: "40px",
-              borderRadius: "50%",
-              margin: "0 10px",
-            }}
           >
             -
           </button>
           {count}
-          <button
-            onClick={() => setCount(count + 1)}
-            style={{
-              border: "none",
-              height: "40px",
-              width: "40px",
-              borderRadius: "50%",
-              margin: "0 10px",
-            }}
-          >
+          <button className="qty-btn" onClick={() => setCount(count + 1)}>
             +
           </button>
         </div>
       </div>
+      {/* <RadioTopping /> */}
     </div>
   );
 };

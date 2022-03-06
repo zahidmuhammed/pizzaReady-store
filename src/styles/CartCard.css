@@ -1,0 +1,55 @@
+.cartcard-wrapper {
+  background-color: white;
+  margin: 10px 5px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card-heading {
+  display: flex;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.toppings-info {
+  font-size: 15px;
+  color: #393939;
+}
+
+.qty-wrapper {
+  display: flex;
+  font-size: 15px;
+  color: #393939;
+  justify-content: space-between;
+}
+
+.qty-btns,
+.price-delete-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qty-change {
+  border: none;
+  border-radius: 50%;
+  height: 17px;
+  width: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.item-size {
+  font-size: 12px;
+  background-color: #c4c4c4;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+@media screen and (min-width: 574px) and (max-width: 1200px) {
+  .qty-wrapper {
+    flex-direction: column;
+  }
+}

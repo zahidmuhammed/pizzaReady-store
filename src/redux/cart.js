@@ -6,8 +6,9 @@ const initialState = {
     pid: "",
     pname: "",
     psize: "",
+    pprice: 0,
     ptoppings: "",
-    pquantity: 1,
+    pquantity: 0,
   },
 };
 
@@ -15,7 +16,7 @@ export const cartSlice = createSlice({
   name: "Cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    addToCart: (state) => {
       state.cartItems.push(state.singleItem);
     },
     setSingleItem: (state, action) => {
@@ -23,20 +24,20 @@ export const cartSlice = createSlice({
       state.singleItem.pname = action.payload.pname;
       state.singleItem.psize = action.payload.psize;
       state.singleItem.pquantity = action.payload.pquantity;
+      state.singleItem.pprice = action.payload.pprice;
     },
     setToppings: (state, action) => {
       state.singleItem.ptoppings = action.payload;
     },
     removeFromCart: (state, action) => {
-      const newCartItems = state.cartItems.filter(
+      state.cartItems = state.cartItems.filter(
         (item) => item.pid !== action.payload
       );
-      state.cartItems = newCartItems;
     },
-    clearCart: (state, action) => {
+    clearCart: (state) => {
       state.cartItems = [];
     },
-    changeQty: (state, action) => {
+    changeQtyFromCart: (state, action) => {
       state.cartItems.filter((obj) => {
         if (obj.pid === action.payload.pid) {
           if (action.payload.type === "plus") {
@@ -59,7 +60,7 @@ export const {
   addToCart,
   setSingleItem,
   setToppings,
-  changeQty,
+  changeQtyFromCart,
   removeFromCart,
   clearCart,
 } = cartSlice.actions;

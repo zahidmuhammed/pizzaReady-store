@@ -24,7 +24,7 @@ export const FilterOrder = () => {
             Price H-L
           </option>
         </Input>
-      </div>{" "}
+      </div>
       <div>
         <Input type="select">
           <option onClick={() => dispatch(sortProductByRating("ascending"))}>

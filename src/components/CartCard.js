@@ -1,6 +1,7 @@
 import React from "react";
+import "../styles/CartCard.css";
 import { useDispatch } from "react-redux";
-import { removeFromCart, changeQty } from "../redux/cart";
+import { removeFromCart, changeQtyFromCart } from "../redux/cart";
 
 import { FaTrash } from "react-icons/fa";
 
@@ -18,94 +19,44 @@ const CartCard = ({ item }) => {
   };
 
   return (
-    <div
-      className="cartcard-wrapper"
-      style={{
-        backgroundColor: "white",
-        margin: "10px 5px",
-        borderRadius: "10px",
-        padding: "10px",
-      }}
-    >
-      <div
-        className="card-top"
-        style={{
-          display: "flex",
-          fontWeight: "bold",
-          fontSize: "15px",
-        }}
-      >
-        {item.pname}
-      </div>
-      <div style={{ fontSize: "15px", color: "#393939" }}>
+    <div className="cartcard-wrapper">
+      <div className="card-heading">{item.pname}</div>
+      <div className="toppings-info">
         Toppings:{item.ptoppings === "" ? " Nothing" : ` ${item.ptoppings}`}
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          fontSize: "15px",
-          color: "#393939",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="qty-wrapper">
         <div>Quantity :</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className="qty-btns">
           <button
-            style={{
-              border: "none",
-              borderRadius: "50%",
-              height: "17px",
-              width: "17px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "0 10px",
-            }}
-            onClick={() => dispatch(changeQty(minusCount))}
+            className="qty-change"
+            onClick={() => dispatch(changeQtyFromCart(minusCount))}
           >
             -
           </button>
-          {item.pquantity}{" "}
+          {item.pquantity}
           <button
-            style={{
-              border: "none",
-              borderRadius: "50%",
-              height: "17px",
-              width: "17px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "0 10px",
-            }}
-            onClick={() => dispatch(changeQty(plusCount))}
+            className="qty-change"
+            onClick={() => dispatch(changeQtyFromCart(plusCount))}
           >
             +
           </button>
         </div>
-        <div style={{ fontSize: "12px" }}>
-          <span
-            style={{
-              backgroundColor: "#C4C4C4",
-              padding: "2px",
-              borderRadius: "3px",
-            }}
-          >
-            {item.psize}
-          </span>
+        <div>
+          <span className="item-size">{item.psize}</span>
         </div>
       </div>
-      <FaTrash
-        color="red"
-        onClick={() => dispatch(removeFromCart(item.pid))}
-        style={{ cursor: "pointer" }}
-      ></FaTrash>
+      <div className="price-delete-part">
+        <div>
+          <span style={{ color: "#4e60ff" }}>₹ </span>
+          {item.pprice * item.pquantity}
+        </div>
+        <FaTrash
+          color="red"
+          onClick={() => dispatch(removeFromCart(item.pid))}
+          style={{ cursor: "pointer" }}
+        ></FaTrash>
+      </div>
     </div>
   );
 };

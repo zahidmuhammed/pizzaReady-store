@@ -1,7 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { filterProductByType } from "../redux/product";
 import { Input } from "reactstrap";
+import {
+  filterProductByType,
+  sortProductByPrize,
+  sortProductByRating,
+} from "../redux/product";
 
 export const FilterOrder = () => {
   const dispatch = useDispatch();
@@ -13,8 +17,22 @@ export const FilterOrder = () => {
     >
       <div>
         <Input type="select">
-          <option>Prize</option>
-          <option>Rating</option>
+          <option onClick={() => dispatch(sortProductByPrize("ascending"))}>
+            Price L-H
+          </option>
+          <option onClick={() => dispatch(sortProductByPrize("descending"))}>
+            Price H-L
+          </option>
+        </Input>
+      </div>{" "}
+      <div>
+        <Input type="select">
+          <option onClick={() => dispatch(sortProductByRating("ascending"))}>
+            Rating L-H
+          </option>
+          <option onClick={() => dispatch(sortProductByRating("descending"))}>
+            Rating H-L
+          </option>
         </Input>
       </div>
       <div>

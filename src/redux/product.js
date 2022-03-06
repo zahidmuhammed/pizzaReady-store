@@ -32,6 +32,22 @@ export const productSlice = createSlice({
         state.filteredProducts = state.datas.filter((item) => !item.isVeg);
       }
     },
+    sortProductByPrize: (state, action) => {
+      if (action.payload === "ascending") {
+        state.filteredProducts.sort((a, b) => (a.price > b.price ? 1 : -1));
+      }
+      if (action.payload === "descending") {
+        state.filteredProducts.sort((a, b) => (a.price < b.price ? 1 : -1));
+      }
+    },
+    sortProductByRating: (state, action) => {
+      if (action.payload === "ascending") {
+        state.filteredProducts.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+      }
+      if (action.payload === "descending") {
+        state.filteredProducts.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+      }
+    },
   },
 });
 

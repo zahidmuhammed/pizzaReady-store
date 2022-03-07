@@ -1,9 +1,8 @@
 import React from "react";
 import "../styles/CartCard.css";
+import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { removeFromCart, changeQtyFromCart } from "../redux/cart";
-
-import { FaTrash } from "react-icons/fa";
 
 const CartCard = ({ item }) => {
   const dispatch = useDispatch();

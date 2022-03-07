@@ -23,13 +23,6 @@ const Header = () => {
       >
         <img src={logo} alt="logo" height={30} />
         PizzaReady
-        {/* <Navbar color="light" expand="md" light>
-          <NavbarBrand href="/">PizzaReady</NavbarBrand>
-          <NavbarToggler onClick={function noRefCheck() {}} />
-          <Collapse navbar className="d-flex justify-content-center">
-            <NavbarText>Order Now !!!</NavbarText>
-          </Collapse>
-        </Navbar> */}
       </div>
     </div>
   );

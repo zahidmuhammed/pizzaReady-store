@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Axios from "axios";
-
-import "../styles/HomeScreen.css";
+import { Container, Row, Col } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setDatas } from "../redux/product";
-
 import ProductCard from "../components/ProductCard";
+import { setDatas } from "../redux/product";
+import "../styles/HomeScreen.css";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const storeData = useSelector((state) => state.products.filteredProducts);
 
   const fetchDetails = async () => {
     const { data } = await Axios.get(
@@ -23,6 +20,8 @@ const HomeScreen = () => {
     fetchDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const storeData = useSelector((state) => state.products.filteredProducts);
 
   return (
     <Container>

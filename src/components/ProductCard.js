@@ -62,6 +62,7 @@ const ProductCard = ({ product }) => {
         {/* {  Modal Section Start } */}
         <ReactModal
           isOpen={showModal}
+          closeTimeoutMS={300}
           style={{
             overlay: {
               position: "fixed",

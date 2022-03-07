@@ -15,3 +15,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.buy-btn {
+  cursor: pointer;
+  color: #061737;
+}

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import "../styles/CartScreen.css";
-import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import store from "store";
 
-import { clearCart, getLocalData } from "../redux/cart";
+import "../styles/CartScreen.css";
 import CartCard from "../components/CartCard";
+
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart, getLocalData } from "../redux/cart";
 
 const storeKey = "PizzaReady-key";
 
@@ -13,11 +14,12 @@ const CartScreen = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
+  // LocalStorage section
   useEffect(() => {
     if (typeof store.get(storeKey) !== undefined) {
       dispatch(getLocalData(store.get(storeKey).data));
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     store.set(storeKey, { data: cartItems });
@@ -35,9 +37,9 @@ const CartScreen = () => {
         <CartCard item={item} key={index} />
       ))}
       <div className="buy-wrapper">
-        <span>{cartItems.length === 0 ? " " : `Total : ₹${totalPrice} `}</span>
+        <span>{cartItems.length === 0 ? " " : `Total :₹ ${totalPrice} `}</span>
         <span
-          style={{ cursor: "pointer", color: "#061737" }}
+          className="buy-btn"
           onClick={() => {
             dispatch(clearCart());
             toast("Order Placed Successfully", { type: "success" });

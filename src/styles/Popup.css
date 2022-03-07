@@ -1,9 +1,7 @@
 .pizza-size-wrapper {
-  /* background-color: #ff9e0b; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* overflow-x: scroll; */
   margin-bottom: 20px;
 }
 

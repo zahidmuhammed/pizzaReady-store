@@ -52,6 +52,9 @@ export const cartSlice = createSlice({
         return obj;
       });
     },
+    getLocalData: (state, action) => {
+      state.cartItems = action.payload;
+    },
   },
 });
 
@@ -63,6 +66,7 @@ export const {
   changeQtyFromCart,
   removeFromCart,
   clearCart,
+  getLocalData,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

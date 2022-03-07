@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/CartScreen.css";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import store from "store";
 
-import { clearCart } from "../redux/cart";
+import { clearCart, getLocalData } from "../redux/cart";
 import CartCard from "../components/CartCard";
+
+const storeKey = "Shopping-key";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
+  useEffect(() => {
+    if (typeof store.get(storeKey) !== undefined) {
+      dispatch(getLocalData(store.get(storeKey).data));
+    }
+  }, []);
+
+  useEffect(() => {
+    store.set(storeKey, { data: cartItems });
+  }, [cartItems]);
+
   let totalPrice = 0;
   for (let i in cartItems) {
     totalPrice += cartItems[i].pprice * cartItems[i].pquantity;
   }
-
-  // const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   return (
     <div className="cart-conatiner">

@@ -7,7 +7,7 @@ import store from "store";
 import { clearCart, getLocalData } from "../redux/cart";
 import CartCard from "../components/CartCard";
 
-const storeKey = "Shopping-key";
+const storeKey = "PizzaReady-key";
 
 const CartScreen = () => {
   const dispatch = useDispatch();

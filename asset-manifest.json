@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/pizzaReady-store/static/css/main.770e200b.css",
+    "main.js": "/pizzaReady-store/static/js/main.9103fe5e.js",
+    "static/js/787.44427992.chunk.js": "/pizzaReady-store/static/js/787.44427992.chunk.js",
+    "static/media/nonveg.png": "/pizzaReady-store/static/media/nonveg.2891bf4b8de56e534265.png",
+    "static/media/veg.png": "/pizzaReady-store/static/media/veg.28f9af60a14178cbb788.png",
+    "index.html": "/pizzaReady-store/index.html",
+    "main.770e200b.css.map": "/pizzaReady-store/static/css/main.770e200b.css.map",
+    "main.9103fe5e.js.map": "/pizzaReady-store/static/js/main.9103fe5e.js.map",
+    "787.44427992.chunk.js.map": "/pizzaReady-store/static/js/787.44427992.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.770e200b.css",
+    "static/js/main.9103fe5e.js"
+  ]
+}

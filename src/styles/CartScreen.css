@@ -10,3 +10,8 @@
   font-weight: bold;
   color: white;
 }
+
+.buy-wrapper {
+  display: flex;
+  justify-content: space-around;
+}

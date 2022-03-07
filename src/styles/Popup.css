@@ -26,13 +26,14 @@
   }
 }
 
-input[type="radio"] {
+input[type="radio"],
+input[type="checkbox"] {
   display: none;
 }
 
 label {
   position: relative;
-  color: #4e60ff;
+  color: #fff;
   font-size: 15px;
   border: 2px solid #4e60ff;
   border-radius: 5px;
@@ -43,7 +44,8 @@ label {
   margin: 0 10px;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
   background-color: #4e60ff;
   color: white;
 }
@@ -53,10 +55,11 @@ input[type="radio"]:checked + label {
   flex-direction: column;
   text-align: center;
   font-weight: bold;
+  color: lightsteelblue;
 }
 
 .popup-heading {
-  color: #0e153a;
+  color: #fff;
   font-size: 30px;
   margin-bottom: 10px;
   font-weight: bold;

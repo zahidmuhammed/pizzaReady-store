@@ -7,13 +7,17 @@ import {
   sortProductByRating,
 } from "../redux/product";
 
-export const FilterOrder = () => {
+const FilterOrder = () => {
   const dispatch = useDispatch();
 
   return (
     <div
       className="container"
-      style={{ display: "flex", justifyContent: "space-around" }}
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        margin: "10px",
+      }}
     >
       <div>
         <Input type="select">
@@ -51,3 +55,5 @@ export const FilterOrder = () => {
     </div>
   );
 };
+
+export default FilterOrder;

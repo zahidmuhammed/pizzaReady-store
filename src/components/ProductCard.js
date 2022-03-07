@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => {
               right: "20vw",
               bottom: "150px",
               border: "1px solid #4e60ff",
-              background: "#fff",
+              background: "#061737",
               overflow: "auto",
               WebkitOverflowScrolling: "touch",
               borderRadius: "10px",

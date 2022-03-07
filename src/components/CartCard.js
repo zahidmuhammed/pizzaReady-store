@@ -12,7 +12,6 @@ const CartCard = ({ item }) => {
     pid: item.pid,
     type: "plus",
   };
-
   const minusCount = {
     pid: item.pid,
     type: "minus",
@@ -28,7 +27,14 @@ const CartCard = ({ item }) => {
       <div className="card-heading">{item.pname}</div>
       <div className="toppings-info">
         Toppings:
-        {ToppingsArray.map(([key]) => key)}
+        <div>
+          {ToppingsArray.map(([key], index) => (
+            <span key={index} style={{ color: "#4e60ff" }}>
+              {key.replaceAll("_", " ")}
+              <br />
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="qty-wrapper">

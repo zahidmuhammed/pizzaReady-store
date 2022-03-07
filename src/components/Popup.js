@@ -2,73 +2,8 @@ import React, { useState } from "react";
 import { v4 } from "uuid";
 import "../styles/Popup.css";
 import { useDispatch } from "react-redux";
-import { setSingleItem, setToppings } from "../redux/cart";
-import { RadioTopping } from "./RadioTopping";
-
-const ToppingsRadio = () => {
-  // const toppings = useSelector((state) => state.products.toppings);
-  const [topping, setTopping] = useState({
-    // red_pepper: false,
-    // onion: false,
-    // grilled_mushroom: false,
-    // extra_cheese: false,
-    // black_olive: false,
-  });
-
-  const handleChange = (e) => {
-    const { id, checked } = e.target;
-    setTopping({ [id]: checked });
-  };
-
-  // console.log(topping);
-  const dispatch = useDispatch();
-  dispatch(setToppings(topping));
-
-  return (
-    <div className="topping-wrapper">
-      <input
-        type="radio"
-        name="toppings"
-        id="red_pepper"
-        // value="red_pepper"
-        onChange={(e) => handleChange(e)}
-      ></input>
-      <label htmlFor="red_pepper">Red Pepper</label>
-      <input
-        type="radio"
-        name="toppings"
-        id="onion"
-        // value="onion"
-        onChange={(e) => handleChange(e)}
-      ></input>
-      <label htmlFor="onion">Onion</label>
-      <input
-        type="radio"
-        name="toppings"
-        id="grilled_mushroom"
-        // value="grilled_mushroom"
-        onChange={(e) => handleChange(e)}
-      ></input>
-      <label htmlFor="grilled_mushroom">Grilled Mushroom</label>
-      <input
-        type="radio"
-        name="toppings"
-        id="extra_cheese"
-        // value="extra_cheese"
-        onChange={(e) => handleChange(e)}
-      ></input>
-      <label htmlFor="extra_cheese">Extra Cheese</label>
-      <input
-        type="radio"
-        name="toppings"
-        id="black_olive"
-        // value="black_olive"
-        onChange={(e) => handleChange(e)}
-      ></input>
-      <label htmlFor="black_olive">Black Olive</label>
-    </div>
-  );
-};
+import { setSingleItem } from "../redux/cart";
+import { CheckBoxToppings, RadioButtonToppings } from "./ToppingSelection";
 
 const Popup = ({ product, isRadio }) => {
   const dispatch = useDispatch();
@@ -88,7 +23,7 @@ const Popup = ({ product, isRadio }) => {
   return (
     <div className="popup-wrapper">
       <div className="popup-heading">{product.name}</div>
-      <span>👇 Choose Size 👇</span>
+      <span>Select 👇 Size </span>
       <div className="pizza-size-wrapper">
         <input
           type="radio"
@@ -115,8 +50,8 @@ const Popup = ({ product, isRadio }) => {
         ></input>
         <label htmlFor="large">Large</label>
       </div>
-      👇 Choose Toppings 👇
-      {isRadio ? <ToppingsRadio /> : <RadioTopping />}
+      Select Toppings 👇{" "}
+      {isRadio ? <RadioButtonToppings /> : <CheckBoxToppings />}
       <div style={{ margin: "10px" }}>
         Quantity
         <div>
